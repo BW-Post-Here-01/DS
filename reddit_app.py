@@ -21,8 +21,7 @@ def predict():
   post = "this is a post"
 #   post = request.form["title"] + ' ' + request.form["text"]
   # get predictions, store as a Pandas Series
-  #preds = pd.Series(loaded_model.predict_proba(post)[0])
-  # assign the subreddit classes to the index
+  #preds = pd.Series(loaded_model.predict_proba([post])[0])  # assign the subreddit classes to the index
   #preds.index = loaded_model.classes_
   # sort by values to get the top results
   #preds = preds.sort_values(ascending=False)
