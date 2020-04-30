@@ -39,6 +39,14 @@ def predict():
     preds.index = loaded_model.classes_
     # sort by values to get the top results
     preds = preds.sort_values(ascending=False)
-    # return the top 5 results as JSON
-    return jsonify(subreddits=preds.index[:5].to_list(),
-                    probabilities=preds[:5].to_list())
+
+    answer = []
+    for i in range(5):
+        answer.append([{'id':i, 
+                        'subreddit': preds.index[i], 
+                        'probability': f'{int(preds[i]*100)}%'}])
+    return jsonify(answer)
+
+    # # return the top 5 results as JSON
+    # return jsonify(subreddits=preds.index[:5].to_list(),
+    #                 probabilities=preds[:5].to_list())
